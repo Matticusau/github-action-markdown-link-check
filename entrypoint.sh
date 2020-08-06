@@ -82,8 +82,8 @@ if [ "$CHECK_MODIFIED_FILES" = "yes" ]; then
    for i in "${FILE_ARRAY[@]}"
       do
          echo -e "checking file exention of ${i}"
-         echo -e "${i##*.} = ${FILE_EXTENSION}"
-         if [ "${i##*.}" = "${FILE_EXTENSION}" ]; then
+         echo -e "${i##*} = ${FILE_EXTENSION}"
+         if [ "${i##*}" = "${FILE_EXTENSION}" ]; then
             FIND_CALL+=("${i}")
             COMMAND="${FIND_CALL[*]}"
             echo -e "command to run: ${COMMAND}"
