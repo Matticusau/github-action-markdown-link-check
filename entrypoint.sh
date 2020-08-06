@@ -81,13 +81,16 @@ if [ "$CHECK_MODIFIED_FILES" = "yes" ]; then
 
    for i in "${FILE_ARRAY[@]}"
       do
-         echo -e "checking file exention ${i}"
+         echo -e "checking file exention of ${i}"
+         echo -e "${i##*.} = ${FILE_EXTENSION}"
          if [ "${i##*.}" = "${FILE_EXTENSION}" ]; then
             FIND_CALL+=("${i}")
             COMMAND="${FIND_CALL[*]}"
             echo -e "command to run: ${COMMAND}"
             $COMMAND &>> error.txt || true
             unset 'FIND_CALL[${#FIND_CALL[@]}-1]'
+         else
+            echo -e "failed extension test"
          fi
       done
    
